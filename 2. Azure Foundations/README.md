@@ -56,8 +56,8 @@ When securing an organizations Azure Estate, it all starts with the EA portal.  
 	* [EA Portal User Management](https://www.youtube.com/watch?v=621jVkvmwm8)
 	* [EA Portal Usage Summary Video](https://www.youtube.com/watch?v=Cv2IZ9QCn9E)
 ## Premiere Workshops
-* Activate Azure with Administration & Governance (https://datasheet.azureedge.net/offerings-datasheets/8230/EN.pdf)
-* Modern Service Management Governance for Azure (https://datasheet.azureedge.net/offerings-datasheets/9005/EN.pdf)
+* [Activate Azure with Administration & Governance](https://datasheet.azureedge.net/offerings-datasheets/8230/EN.pdf)
+* [Modern Service Management Governance for Azure](https://datasheet.azureedge.net/offerings-datasheets/9005/EN.pdf)
 ---
 ---
 
