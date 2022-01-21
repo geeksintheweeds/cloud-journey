@@ -1,7 +1,7 @@
 # Azure Foundations
 
 ## Overview
-Strong foundations are critical to the long term safety and stability of a building (such as a datacenter) and the cloud is no different.  This section provides an overview of some of the fundamental concepts that make up the foundations of an organizations Azure Estate.  This is not meant to replace official documentation, MS Learn trainings or professional services.  It is simply a high level overview of the concepts and some key best practices obnserved by Azure Cloud Solutions Architects over dozens of customers and several years.
+Establishing a strong foundation is critical to the success of cloud adoption.  This section provides an overview of the fundamental concepts that make up the foundations of an organization's Azure estate.  This is not meant to replace official documentation, MS Learn trainings, or professional services.  It is a high level overview of the concepts and key best practices observed by the authors over years of working with a wide range of customers across many industries.
 
 ## Sections
 * [EA Portal](#ea-portal)
@@ -11,33 +11,29 @@ Strong foundations are critical to the long term safety and stability of a build
 ---
 # EA Portal
 ## Summary
-When securing an organizations Azure Estate, it starts with the EA portal.  Most understand that the EA portal is a cost and billing function but what is often missed is that the EA Portal Administrator has the ability to modify account owners and thus subscription owners.  From the perspective of the organizations Azure estate the EA Administrator has full access.  This is a commonly misunderstood administrative access path.  Most organizations think of the EA portal as solely a cost and billing function and do not realize the "Shadow Admin" type of access it has.
+Securing an organization's Azure footprint begins with the EA (Enterprise Agreement) Portal.  Many organizations focus on the cost and billing function of the EA Portal and are unaware of the security risks the EA Portal can present to their Azure resources. In addition to cost and billing, the EA Portal is the administration point for Enterprise Enrollments and Azure Accounts. This capability makes it critically important to properly secure access to the EA Portal.
 ## Key Points
-* EA Portal is both an Administrative and Billing & Cost Management function.
-* Azure Account Owners (EA Portal) hold the Azure RBAC Role of Owner on Subscriptions they created or transferred.
-* Azure Account Owner must be a valid email address
+* EA Portal is used for administration in addition to cost and billing.
+* EA Portal is used to manage access to Enterprise Enrollments and Azure Accounts.
+* EA Portal supports authentication with both accounts sourced from Azure AD (referred to as Work and School accounts) and Microsoft Accounts.
+* Administrators of an Enterprise Enrollment have full control of the Azure Accounts created under the enrollment.
+* The individual(s) with control over the email address associated with an Azure Account Owner inherits the Azure RBAC Role of owner on any subscription created under or transferred to the Azure Account.
+* The email address associated with an Azure Account must be a valid email address. This is because it is needed for communication from Microsoft.
+* The audit logs for the EA Portal are only available by opening a support ticket with Microsoft.
 ## Best Practices
-* Use Azure AD Authentication only (Work and School accounts) and avoid using Microsoft Live accounts
-* For privileged roles, use shared accounts where credentials are secured in a password/credential/secret management system and email address is accessible to multiple individuals. (EA Admins, Account Owners, Department Admins)its
+* Use only Azure AD Authentication (Work and School accounts). 
+* For privileged roles in the EA Portal such as enrollment or department administrator, look at applying existing privileged access patterns. For example, you could use shared accounts where the credentials are secured in a credential management system such as Thycotic or CyberArk.
+* Grant business users, such as the accounting department, read-only roles.
 * Consider creating separate Azure Account for non-prod and production subscriptions to limit blast radius.
-* Do not use the Azure AD Identity associated with the Azure Account (EA Portal) for administration of Azure resources. 
-* Use separate identities for EA Portal Administration, Azure Administration, Azure AD Administration, M365 etc
+* Do not use the Azure AD Identity with the email address associated with the Azure Account for administration of Azure resources. 
+* Use separate identities for EA Portal Administration, Azure Administration, Azure AD Administration, and Microsoft 365 services.
 ## Checklist
-- [ ] Are you administering the EA Portal with Azure AD Identities or Microsoft Accounts?
+- [ ] Is your instance of the EA Portal configured for both Azure AD and Microsoft account authentication? Check the [Auth level](https://docs.microsoft.com/en-us/azure/cost-management-billing/manage/ea-portal-troubleshoot#issues-adding-a-user-to-an-enrollment) in the EA Portal. 
 - [ ] Have you documented who has access to the EA Portal and what they have permission to do?
-- [ ] How are you securing access to the EA portal and the EA accounts?
-	* You should vault/secure the EA accounts
-	* You should use privileged access service for access to these accounts
-- [ ] Have you started creating Accounts yet?
-	* Who are the owners of those accounts?
-	* Are you using shared accounts?
-- [ ] What is your process for creating subscriptions?
-	* At the minimum you should have a documented process, even if it is manual to control the creation of subscriptions.
-	* This helps prevent subscription bloat
-	* Ensures proper governance, tagging, billing, ownership, administration etc
-	* You can improve the process by tying into the API with your ITSM solution and automation.
-- [ ] What are your processes for break glass, emergency access to the EA portal
-	* Recommended that you have two cloud local accounts sourced from azure AD that are separate from the Azure AD global admins
+- [ ] Have you implemented the best practices for the EA Portal that are referenced above?
+- [ ] Have you created any Azure Accounts? How are you handling access to the email addresses associated with the Azure Accounts?
+- [ ] Have you documented the processes for managing the lifecycle of Azure Accounts?
+- [ ] What are your processes for break glass / emergency access to the EA portal?
 ## Links
 * [Azure EA portal administration | Microsoft Docs](https://docs.microsoft.com/en-us/azure/cost-management-billing/manage/ea-portal-administration)
 * [Create Azure subscriptions programmatically | Microsoft Docs](https://docs.microsoft.com/en-us/azure/cost-management-billing/manage/programmatically-create-subscription)
@@ -59,34 +55,37 @@ When securing an organizations Azure Estate, it starts with the EA portal.  Most
 ---
 ---
 
-
 # Management Groups
 ## Summary
-Once an organization has settled on an access model for the EA portal, some basic R&R on Azure and a RACI of common tasks, the work can begin designing the organizations actual Azure Estate.  The first primitive is the management group structure.  Management groups are logical containers for subscriptions.  They are a construct where Azure RBAC (Permissions) and Azure Policy (Controls) can be applied with enforcement pushed down and inherited by child management groups and subscriptions.  There are a few common models for Management groups linked below but an organization should think about where lines are drawn with regards to access and controls as to how to formulate their structure.  For example, separating production vs non-production in order to apply differing permissions or separating public facing workloads vs internal facing workloads.
-## Key Points
-* List Key Points
-* Not trying to recreate public documentation
-* Just include the important gotchas
+Managing the access, security, and compliance of an organization's IT estate can be challenging.  Azure cloud introduces management groups which help to address these challenges. Management groups are logical containers for subscriptions which contain Azure resources.  They are a construct where Azure RBAC (Permissions) and Azure Policy (Controls) can be applied and enforced to child resources such as child management groups and subscriptions. Establishing a management structure that aligns with organizational goals is critical to the design of the foundation of the Azure platform. Included in this repository and the links below are some common management group patterns that the authors have seen implemented successfully across organizations.
+## [Key Points](https://www.cloud-architekt.net/azure-ea-management-security-considerations/)
+* Management groups are hiearcharal in nature and there can be multiple children to a parent but only a single parent to a child.
+* Management groups can have child management groups and subscriptions.
+* Subscriptions can be the child of a single management group.
+* Each Azure AD tenant contains a root management group.
+* Management groups can be nested underneath other management groups up to a hard limit of six levels.
+* Management groups have their own [Activity Logs](https://docs.microsoft.com/en-us/azure/governance/management-groups/overview#audit-management-groups-using-activity-logs) separate from subscription.
 ## Best Practices
-* Keep the hierarchy flat and limited to 4 levels (6 levels hard cap)
-* Always start with a single organizational Management Group under the root
-* Tightly control access to MGs limiting it to non-human/automation accounts
-* Create a default management group to apply bare minimum level of controls
-* Use management groups for RBAC inheritance and governance (policy) inheritance 
-* Apply Policies at the highest level possible but avoid applying at the root to avoid having to manage exclusions at inherited scopes
-* Consider putting sandboxed workloads in a separate management group to allow exploration of new services
-* Enable Azure RBAC for Management Groups [link](https://docs.microsoft.com/en-us/azure/governance/management-groups/how-to/protect-resource-hierarchy#setting---require-authorization)
-* Examples
-    * Prod/Non-Prod
-    * Regional
-    * By Regulatory Requirement
+* Keep the hierarchy flat and limited to 4 levels (6 levels hard cap).
+* Always start with a single organizational Management Group under the root management group.
+* Tightly control access to management groups limiting it to non-human/automation accounts where possible.
+* Create a [default management group](https://docs.microsoft.com/en-us/azure/governance/management-groups/how-to/protect-resource-hierarchy#setting---default-management-group) where newly create subscriptions that are not created with a parent management group are placed. The default management group should have a minimum set of access and security controls.
+* Use management groups for Azure RBAC inheritance and Azure Policy inheritance.
+* Apply Azure Policies at the highest level possible but avoid applying at the root management. This will avoid having to use exceptions and utilize highly privileged roles to administer it.
+* Consider putting sandboxed workloads in a separate management group to allow exploration of new services.
+* [Enable Azure RBAC for Management Groups](https://docs.microsoft.com/en-us/azure/governance/management-groups/how-to/protect-resource-hierarchy#setting---require-authorization) to limit who can create management groups.
+* [Enable diagnostic logging for mangement group Activity Logs](https://docs.microsoft.com/en-us/rest/api/monitor/management-group-diagnostic-settings/create-or-update)
+* Apply the [Azure Security Benchmarks initiative](https://docs.microsoft.com/en-us/azure/governance/policy/samples/azure-security-benchmark) in audit mode to the organizational top-level management under the root management group. This will provide a baseline as to the security posture of the Azure estate.
 ## Checklist
-- [ ]Do you have a proposed architecture and design for Management Groups?
-- [ ]What is the thought process around the design?
+- [ ] Do you have a proposed architecture and design for management groups?
+- [ ] What were the requirements that drove the design?
 - [ ] Have the management groups been created?
-- [ ]Have Azure Policies been applied to the management groups?
-- [ ]Have subscriptions been moved to the appropriate management groups?
-- [ ]Have you established a default management group
+- [ ] Have established a process for managing the lifecycle of management groups?
+- [ ] Has Azure RBAC been applied to the management groups?
+- [ ] Have Azure Policies been applied to the management groups?
+- [ ] Have subscriptions been moved to the appropriate management groups?
+- [ ] Have you established a default management group?
+- [ ] Have you applied the Azure Security Benchmarks initiative in audit mode?
 ## Links
 * [Management group and subscription organization - Cloud Adoption Framework | Microsoft Docs](https://docs.microsoft.com/en-us/azure/cloud-adoption-framework/ready/enterprise-scale/management-group-and-subscription-organization)
 * [Azure management groups documentation | Microsoft Docs](https://docs.microsoft.com/en-us/azure/governance/management-groups/)
@@ -108,39 +107,35 @@ Once an organization has settled on an access model for the EA portal, some basi
 ---
 ---
 
-
 # Subscriptions
 ## Summary
-The next logical container below Management Groups are Subscriptions.  Subscriptions are created by Azure Accounts through the Enterprise Admin portal (or API).  They act as permissions, policy and billing boundaries.  For many organizations they are a major construct for delineation between business lines, apps of different risk profiles and even central IT groups.  The closest analogies to other clouds would be AWS Accounts or GCP Projects but with some significant differences to both.  Subscription strategy significantly impacts and is impacted by the organizational cloud strategy.  An organization that seeks to "democratize" the cloud may opt for a lot of Subscriptions, while an organization building a one off workload in the cloud may seek to minimize the number of subscriptions. 
+Subscriptions are logical containers for Azure resources and act as permissions, policy and billing boundary. Subscriptions are child objects of an Azure Account and can be created [in the Azure Portal](https://docs.microsoft.com/en-us/azure/cost-management-billing/manage/create-subscription) or the EA Portal if the Azure Account is associated with an Enterprise Enrollment. The [strategy around the usage of subscriptions](https://docs.microsoft.com/en-us/azure/cloud-adoption-framework/decision-guides/subscriptions/) is driven by the organization's cloud strategy. They may be organized based upon business unit, workload classification, geography, or a mix of each. Included in this repository and the links below are some common subscription strategies that the authors have seen implemented successfully across organizations.
 ## Key Points
-* Limit Boundary (Azure Resource Limits)
-    * These are real limits that need to be considered, for example 1000 VMs sounds like a lot but could easily be exceeded in large AVD deployments
-* Some limits can be increased via support (such as VM cores)
-* Authorization and Administrative Boundary (Azure RBAC), Blast Radius Boundary
-* Compliance Boundary (Azure Policy)
-* Cost Boundary
-*  Provisioned by Azure Accounts in the EA Portal
-* Azure Accounts from EA Portal also have Administrative permissions over the Subscriptions in the Azure Portal
-* Subscriptions share the Identity boundary of the Azure AD Tenant they are joined to.
-* Example Subscription Models
+* [Limited to a certain number of resources](https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/azure-subscription-service-limits) in order to accomodate the multi-tenant nature of the public cloud.
+* Limits in a subscription are either soft limits or hard limits. Engage your Microsoft team when you have requirements to go beyond a limit.
+* Blast radius where a user or group assigned the RBAC Owner role has full permissions on all resources within the subscription.
+* Compliance boundary where Azure Policy can be applied to enforce organizational operations and security controls.
+* Cost boundary which includes all resources in the subscription.
+* Created either in the Azure Portal, EA Portal, or via [API](https://docs.microsoft.com/en-us/azure/cost-management-billing/manage/programmatically-create-subscription).
+* The user or group who controls the Azure Account used to create the subscription has full control over the resources in the subscription. 
+* Subscriptions must be associated to a single Azure AD tenant.
+* Resources within a subscription can only be attached to Virtual Networks in the same subscription.
 ## Best Practices
-* Establish formalized process for the creation of new subscriptions
-* Separate Subscriptions for core infrastructure services vs workloads to limit blast radius
-* Use Subscriptions as a boundary for workloads with specific governance requirements such as PCI
-* Remember that resources within a subscription can only use a virtual network within the same subscription
-* Separate Subscriptions for sandbox and non-prod workloads
-* Leverage MSDN subscriptions for true sandbox purposes
-* Avoid creating subscriptions and resources non-prod azure tenants
-* Do not grant "Contributor" or "Owner" roles standing access to Subscriptions
-    * Most access can be configured using built in Azure RBAC Roles or derivates of
-* Monitor subscription resource limits via the Azure Advisor
+* Subscriptions used by the organization for non-production and production should be created from an Enterprise Enrollment and should be associated to the production Azure AD tenant.
+* Work with your Microsoft support team to block subscriptions that are not sourced from the Enterprise Enrollment. This would include subscriptions offers like Visual Studio and Pay-As-You-Go subscriptions.
+* Subscriptions used by individual employees for the purposes of learning and experimentation should be Visual Studio Subscriptions and should not be associated to any of the organization's Azure AD tenants.
+* Establish formalized process for the subscription lifecycle.
+* Separate subscriptions for shared infrastructure services from subscriptions containing resources for specific workloads.
+* Use separate subscriptions for non-production and production
+* Use separate subscriptions as boundaries between workloads with differing compliance requirements.
+* Avoid granting human users the Contributor or Owner role on a subscription. Consider using less-privileged [built-in Azure RBAC roles](https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-roles) or creating [custom Azure RBAC roles](https://docs.microsoft.com/en-us/azure/role-based-access-control/custom-roles).
+* Monitor subscription resource limits using Azure Advisor.
 ## Checklist
-- [ ]Have you settled on a subscription structure that builds on the Management Group Structure?
-- [ ]Have you settled on a subscription provisioning process?
-- [ ]Have you settled on an RBAC model for the subscriptions
-- [ ]Have you created the initial subscriptions necessary to begin building out the Azure Estate
-    * Alternatively have you built out brownfield or greenfield subscriptions
-- [ ]Have you secured the "Owner" accounts for the subscription via shared vaulted credentials or application of organizational privileged access patterns
+- [ ] Have you established process for managing the lifecycle of subscriptions? Does this take into account the management group design?
+- [ ] Have you established a baseline configuration for both operations and security for new subscriptions?
+- [ ] Have you established an RBAC model for the different types of subscriptions (shared services, identity, networking, workload, etc)?
+- [ ] Have you created any subscriptions? Do you know which Azure Account the subscriptions are associated with?
+- [ ] Have you secured the identities for owners of the Azure Accounts for each subscription?
 ## Links
 * [Azure Subscription Limits | Microsoft Docs](https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/azure-subscription-service-limits)
 * [Subscription Decision Guide | Cloud Adoption Framework](https://docs.microsoft.com/en-us/azure/cloud-adoption-framework/decision-guides/subscriptions/)
