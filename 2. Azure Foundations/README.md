@@ -11,25 +11,23 @@ Strong foundations are critical to the long term safety and stability of a build
 ---
 # EA Portal
 ## Summary
-When securing an organizations Azure Estate, it all starts with the EA portal.  Most understand that the EA portal is a cost and billing function but what is often missed is that the EA Portal Administrator has the ability to modify account owners and thus subscription owners.  From the perspective of the organizations Azure estate the EA Administrator has full access.  This is a commonly misunderstood administrative access path.  Most organizations think of the EA portal as solely a cost and billing function and do not realize the "Shadow Admin" type of access it has.
+When securing an organizations Azure Estate, it starts with the EA portal.  Most understand that the EA portal is a cost and billing function but what is often missed is that the EA Portal Administrator has the ability to modify account owners and thus subscription owners.  From the perspective of the organizations Azure estate the EA Administrator has full access.  This is a commonly misunderstood administrative access path.  Most organizations think of the EA portal as solely a cost and billing function and do not realize the "Shadow Admin" type of access it has.
 ## Key Points
-* EA Portal is an Administrative function as well as Cost Management/Billing
+* EA Portal is both an Administrative and Billing & Cost Management function.
+* Azure Account Owners (EA Portal) hold the Azure RBAC Role of Owner on Subscriptions they created or transferred.
+* Azure Account Owner must be a valid email address
 ## Best Practices
 * Use Azure AD Authentication only (Work and School accounts) and avoid using Microsoft Live accounts
 * For privileged roles, use shared accounts where credentials are secured in a password/credential/secret management system and email address is accessible to multiple individuals. (EA Admins, Account Owners, Department Admins)its
 * Consider creating separate Azure Account for non-prod and production subscriptions to limit blast radius.
-	* Account Owners are Owners of Subscriptions so having a single Account Owner over BOTH prod/non-prod subscriptions introduces the risk of accidental changes to production.
-* Do not use the Account Owner ID for administration of Azure resources. 
-	* Use separate accounts for EA Portal Administration vs Azure Portal administration vs Azure AD Administration
-* Do not use the same accounts for Administrative access in multiple places (EA Portal, Azure Portal, Azure AD, M365)
-* No account should be used in any two portals
+* Do not use the Azure AD Identity associated with the Azure Account (EA Portal) for administration of Azure resources. 
+* Use separate identities for EA Portal Administration, Azure Administration, Azure AD Administration, M365 etc
 ## Checklist
-- [ ] Who has permissions to the EA portal?
-	* Have you documented the access model and approval process?
+- [ ] Are you administering the EA Portal with Azure AD Identities or Microsoft Accounts?
+- [ ] Have you documented who has access to the EA Portal and what they have permission to do?
 - [ ] How are you securing access to the EA portal and the EA accounts?
 	* You should vault/secure the EA accounts
 	* You should use privileged access service for access to these accounts
-    * Are those Microsoft accounts or sourced from Azure AD
 - [ ] Have you started creating Accounts yet?
 	* Who are the owners of those accounts?
 	* Are you using shared accounts?
