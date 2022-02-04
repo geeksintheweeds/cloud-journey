@@ -20,6 +20,7 @@ Securing an organization's Azure footprint begins with the EA (Enterprise Agreem
 * The individual(s) with control over the email address associated with an Azure Account Owner inherits the Azure RBAC Role of owner on any subscription created under or transferred to the Azure Account.
 * The email address associated with an Azure Account must be a valid email address. This is because it is needed for communication from Microsoft.
 * The audit logs for the EA Portal are only available by opening a support ticket with Microsoft.
+* Enterprise enrollments can span Azure AD tenants allowing you to create subscriptions in multiple tenants all charging back to the same enterprise enrollment.
 ## Best Practices
 * Use only Azure AD Authentication (Work and School accounts). 
 * For privileged roles in the EA Portal such as enrollment or department administrator, look at applying existing privileged access patterns. For example, you could use shared accounts where the credentials are secured in a credential management system such as Thycotic or CyberArk.
@@ -120,6 +121,7 @@ Subscriptions are logical containers for Azure resources and act as permissions,
 * The user or group who controls the Azure Account used to create the subscription has full control over the resources in the subscription. 
 * Subscriptions must be associated to a single Azure AD tenant.
 * Resources within a subscription can only be attached to Virtual Networks in the same subscription.
+* Transferring subscriptions between Azure AD tenants will result in the loss of all Azure RBAC and Azure Policy assignments.
 ## Best Practices
 * Subscriptions used by the organization for non-production and production should be created from an Enterprise Enrollment and should be associated to the production Azure AD tenant.
 * Work with your Microsoft support team to block subscriptions that are not sourced from the Enterprise Enrollment. This would include subscriptions offers like Visual Studio and Pay-As-You-Go subscriptions.
