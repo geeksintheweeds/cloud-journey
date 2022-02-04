@@ -3,7 +3,14 @@
 
 Establishing roles and responsibilities is a critical step in the cloud adoption journey. Existing roles and responsibilities will evolve and new roles may need to be created. Identifying key decision makers both technical and non-technical questions that may arise is important to ensure the right people are involved in process and architectural decisions. The earlier the roles and responsibilties are agreed upon and documented, the more successful an organization will be in adopting the cloud. Holding off this conversation until after design and implementation results in poor architectural decisions which create technical debt, unaccounted for risks which can lead to audit findings, and expensive delays in implementation and operationalization. 
 
-A RACI matrix is an effective tool in documenting roles and responsibilities.  RACI stands for responsible, accountable, consulted, and informed. The matrix contains a listing of tasks which are assigned to functional roles. For each task there is always one accountable party, one or more responsible parties, and optionally consulted or informed parties. Accountable parties are the decision makers and are accountable for the success or failure of the task. Responsible parties have a responsibility in completing the task but are not accountable for the success or failure of the task. Consulted parties may be consulted during a task for best practices or advice but are not responsible or accountable for the success or failure of the task. Informed parties have an interest in whether or not the task is successful but are not directly involved in completion of the task.
+A RACI matrix is an effective tool in documenting roles and responsibilities.  RACI stands for responsible, accountable, consulted, and informed. The table below includes a description of each term.
+
+| Term          | Number of Individuals | Definition  | 
+| ------------- | ------------- |-------------|
+| Accountable | 1 | This party is the decision maker and is answerable for the success or failure of the process. | 
+| Responsible | Many | These parties play a role in the completion of the process but are not decision makers.  | 
+| Consulting | Many | These parties should be solicited for best practices and feedback on the process but are not involved in the completion of the process and are not decision makers. |
+| Informed | Many | These parties have an interest in the completion of the process but are not involved in feedback, completion of the tasks, or decision making. |
 
 The purpose of the RACI matrix included in this module is to provide organizations who are planning to or have adopted Azure an understanding of the foundational processes and tasks necessary for successful cloud adoption. It includes processes and tasks for both the governance of cloud and operationalization of Microsoft Azure. The intent of this RACI matrix is to provide a starting point to understand and identify key teams that will be involved in architectural and process decisions during cloud adoption. It is not intended to replace a detailed RACI which could then be used to create custom Azure RBAC roles. Those types of RACIs can take weeks or months to create. This RACI can be completed in a one to two day workshop and will help to ensure the right teams are involved in future architectural and process based decisions during cloud adoption.
 
@@ -11,7 +18,7 @@ The roles included in the RACI should be treated as general buckets which may in
 
 | Role          | Description   | 
 | ------------- |:-------------|
-| **Cloud Service Owner**    | Individual who is accountable for service management for cloud services; cloud architect | 
+| **Cloud Service Owner**    | Individual who is accountable for the cloud program. This is often a role held by the CIO. The responsibility can be delegated to an architectural review board or CCoE.  | 
 | **Workload Owner**    | Development team or primary support personnel for workload | 
 | **Operations**    | Tier 2 day to day operation of the environment such as troubleshooting and incident management | 
 | **Security Auditors**    | Tier 2 team responsible for validating security configuration for compliance | 
