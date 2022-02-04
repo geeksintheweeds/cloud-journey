@@ -1,23 +1,42 @@
-# Roles and Responsibilities + RACI
+# Roles and Responsibilities and RACI Matrix
 ## Summary
-As soon as an organization starts to secure the EA portal access, they arrive at the question of "Who should have access?".  This leads to the next logical discussion which is around Roles and Responsibilities.  This section is not about IAM or Azure RBAC specifically, as those come later but rather about organizational roles, responsibilities and RACI.  Every org should have a clear RACI and R&R chart.  It will not be possible to classify EVERYTHING but there are certain functions that are critical up front and if they are appropriately defined it at least provides a starting point for future discussions.  It is common for organizations who are already mature in other clouds to assume that this step can be skipped but it is important to understand that Azure works differently in certain critical areas to other clouds and especially on prem so even if a mature RACI and R&R exists, it should be revisited with a Microsoft CSA for alignment to Azure.  The most obvious difference is the Identity plane.  Azure is one big shared Identity boundary.  All subscriptions associated with an Azure AD tenant share that Azure AD tenant as an Identity and Authentication boundary.  Individual subscriptions are an Authorization boundary.  This is good and bad, it allows Microsoft to leverage incredibly powerful features of Azure AD like conditional access, HOWEVER it necessitates that a bit more planning and governance go into building out an organizations Azure estate before turning the dev community loose.  In other clouds, a sandbox environment can be stood up that is completely isolated from the larger enterprise where there is near 0 risk to the org.  In Azure that is a bit more difficult since even sandbox environments share the Identity plane.
+
+Establishing roles and responsibilities is a critical step in the cloud adoption journey. Existing roles and responsibilities will evolve and new roles may need to be created. Identifying key decision makers both technical and non-technical questions that may arise is important to ensure the right people are involved in process and architectural decisions. The earlier the roles and responsibilties are agreed upon and documented, the more successful an organization will be in adopting the cloud. Holding off this conversation until after design and implementation results in poor architectural decisions which create technical debt, unaccounted for risks which can lead to audit findings, and expensive delays in implementation and operationalization. 
+
+A RACI matrix is an effective tool in documenting roles and responsibilities.  RACI stands for responsible, accountable, consulted, and informed. The matrix contains a listing of tasks which are assigned to functional roles. For each task there is always one accountable party, one or more responsible parties, and optionally consulted or informed parties. Accountable parties are the decision makers and are accountable for the success or failure of the task. Responsible parties have a responsibility in completing the task but are not accountable for the success or failure of the task. Consulted parties may be consulted during a task for best practices or advice but are not responsible or accountable for the success or failure of the task. Informed parties have an interest in whether or not the task is successful but are not directly involved in completion of the task.
+
+The purpose of the RACI matrix included in this module is to provide organizations who are planning to or have adopted Azure an understanding of the foundational processes and tasks necessary for successful cloud adoption. It includes processes and tasks for both the governance of cloud and operationalization of Microsoft Azure. The intent of this RACI matrix is to provide a starting point to understand and identify key teams that will be involved in architectural and process decisions during cloud adoption. It is not intended to replace a detailed RACI which could then be used to create custom Azure RBAC roles. Those types of RACIs can take weeks or months to create. This RACI can be completed in a one to two day workshop and will help to ensure the right teams are involved in future architectural and process based decisions during cloud adoption.
+
+The roles included in the RACI should be treated as general buckets which may include multiple teams from the organization. For example, the Security Admin role may be a bucket which includes both Security Architecture and Security Engineering. Each role is described below.
+
+| Role          | Description   | 
+| ------------- |:-------------|
+| **Cloud Service Owner**    | Individual who is accountable for service management for cloud services; cloud architect | 
+| **Workload Owner**    | Development team or primary support personnel for workload | 
+| **Operations**    | Tier 2 day to day operation of the environment such as troubleshooting and incident management | 
+| **Security Auditors**    | Tier 2 team responsible for validating security configuration for compliance | 
+| **Systems Operators**     | Tier 3 team responsible for design, implementation, and configuration of compute resources (VMs, SQL, etc)     |   
+| **Network Operators** | Tier 3 team responsible for design, implementation, and configuration of network resources (Vnet, routing tables, etc)   |   
+| **Security Admins**    | Tier 3 team responsible for setting security policy and configuration of security solutions | 
 
 ## Key Points
-* List Key Points
-* Not trying to recreate public documentation
-* Just include the important gotchas
+* The workshop requires attendance of architecture, security, systems, networking, operations, and ideally one or two workload owners.
+* The workshop typically takes one to two full days.
+* The workshop should be conducted in partnership with the organization's Microsoft account team.
+* Organizational decision makers around cloud adoption should be in attendance.
+
 ## Best Practices
-* Establish Roles and Responsibilities up front before starting to build.  You will likely have to change it but provides a starting point
-* Start with a baseline RACI as you start to outline high level tasks and activities for Azure
-* Even if you have mature R&R & RACI, be sure to revisit through the context of Azure
-* Be sure to include all important and relevant parties, Azure AD is a shared Identity plane across all Microsoft clouds so include the relevant parties
+* Establish roles and responsibilities before design and implementation. This will help to ensure requirements are not missed.
+* Use the RACI matrix included in this module as a starting point and build it out as you move through your cloud adoption journey.
+* If an existing RACI exists for on-premises make sure it is updated to include the cloud.
+* Microsoft Azure shares an identity plane through Azure AD with Microsoft 365 services. Ensure the teams that administer Azure AD are included in the RACI conversations.
+
 ## Checklist
-- [ ] Have you decided on roles and responsibilities for Azure
-- [ ] Have you translated those roles and responsibilities to actual permissions within azure and builtin or custom RBAC roles?
-- [ ] Have you outlined common tasks and activities in azure in the form of a RACI (Use the RACI Toolkit as an example)
+- [ ] Have you decided on roles and responsibilities for Azure?
+- [ ] Have you documented roles and responsibilities for the cloud?
+- [ ] Have you codified the roles in responsibilties into Azure RBAC Roles?
 ## Links
 * [Aligning responsibilities across teams - Cloud Adoption Framework | Microsoft Docs](https://docs.microsoft.com/en-us/azure/cloud-adoption-framework/organize/raci-alignment)
-* [Azure RACI-Toolkit: Toolkit to help operationalize Microsoft Azure (github.com)](https://github.com/mattfeltonma/Azure-RACI-Toolkit)
 ## Learning
 * Mslearn
 	* [Secure your Azure resources with Azure role-based access control (Azure RBAC) - Learn | Microsoft Docs](https://docs.microsoft.com/en-us/learn/modules/secure-azure-resources-with-rbac/)
