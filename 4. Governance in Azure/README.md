@@ -36,7 +36,7 @@ Within the Azure cloud there are generally speaking, Azure technical controls, n
 
 There is no easy button and just as with any new technology, an organization still must follow the processes and exercises that look at controls from an organizational lens to arrive at organizational specific controls (control mapping).  
 
-![asb](https://github.com/geeksintheweeds/cloud-journey/blob/main/4.%20Governance%20in%20Azure/images/azurebenchmarkcontrolscoverage.jpg)
+![asb](images/azurebenchmarkcontrolscoverage.jpg)
 
 ## Key Points
 * Order of Evaluation
