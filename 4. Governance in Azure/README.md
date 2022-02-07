@@ -14,51 +14,18 @@ One of the very first topics that comes up with almost every organization is clo
 
 At a VERY basic level GRC can be summarized as
 
-	• Governance
-		• What do you need to do?
-			* Laws and regulations
-			* Business Requirements
-			* Standards and Frameworks
-		• Why do you need to do it?
-			* Customer Commitments
-			* Laws and Regulations
-			* Business Agreements
-		• What are you going to do?
-			* Organizational Policies
-			* Organizational Controls and Standards
-		• How are you going to do it?
-			* Benchmark Checklist definitions
-			* Processes, Procedures, and compensating Controls
-			* System Security Plans
-	• Risk
-		• What was the reasoning and justification for choosing to do what you did, how you did it?
-			* Risk Assessments
-				○ Controls Mapping decisions
-				○ Exception processes
-				○ Business risk assessments
-				○ Application risk assessments
-				○ Program Assessments
-		• What did you do?
-			* Data classification
-			* Application classification
-		• What are you doing?
-			* Vulnerability Monitoring
-	• Compliance
-		• What did you do?
-			* Assessments
-				○ Self
-				○ External
-		• What are you doing?
-			* Monitoring
-			* Alerting
-			* Reporting
-		• Did you / Are you do what you said you were going to do?
-			* Audits
-				○ Internal Audits
-		• Did you / Are you doing what you are supposed to do?
-			* Audits
-				○ Regulatory Audits
-				○ Contractual Audits
+* Governance
+	* What do you need to do?
+	* Why do you need to do it?
+	* What are you going to do?
+	* How are you going to do it?
+* Risk
+	* What did you / are you doing?
+	* Why did you do what you did, how you did it?
+* Compliance
+	* What did you / are you doing?
+	* Did you / Are you do what you said you were going to do?
+	* Did you / Are you doing what you are supposed to do?
 ---
 ---
 
