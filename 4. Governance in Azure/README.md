@@ -1,6 +1,70 @@
-# Azure Policy and Governance
+# Azure Governance and Policy
+## Overview
+Through the thought process and design of the Management Group and Subscription structure the topic of policies is inevitably going to come up.  That is because the biggest function of Management Groups is application of Azure Policies and Azure RBAC.  It can be difficult to envision the ideal Management Group structure for an organization until there is a clear understanding of Governance and Compliance requirements.  Organization should start with a familiar controls framework like CIS, NIST CCM etc and review the corresponding Azure Benchmark and look for controls where there might be deviations or different baselines based on the workload.  These scenarios might lead to requirements to have separate management groups.  For instance, an organization may choose to restrict which azure services are available in production environments based on an internal service approval process.  However, they may choose to allow those services to be used in a sandbox environment that has no connectivity to production or production data.  This is a common example and would result in a separate management group for sandbox workloads.  
+
+## Sections
+* [Governance Risk and Compliance](#governance-risk-and-compliance)
+* [Azure Policy](#azure-policy)
+
+---
+---
+# Governance Risk and Compliance
 ## Summary
-Through the thought process and design of the Management Group and Subscription structure the topic of policies is inevitably going to come up.  That is because the biggest function of Management Groups is application of Azure Policies.  It can be difficult to envision the ideal Management Group structure for an organization until there is a clear understanding of Governance and Compliance requirements.  Organization should start with a familiar controls framework like CIS, NIST CCM etc and review the corresponding Azure Benchmark and look for controls where there might be deviations or different baselines based on the workload.  These scenarios might lead to requirements to have separate management groups.  For instance, an organization may choose to restrict which azure services are available in production environments based on an internal service approval process.  However, they may choose to allow those services to be used in a sandbox environment that has no connectivity to production or production data.  This is a common example and would result in a separate management group for sandbox workloads.  It is also important to note that Azure Policy can fill multiple functions within the GRC+ framework.  It can document controls (Governance), audit controls (Compliance) and it can enforce controls (Governance).  It is important to recognize that what it cannot do is the Risk functions which tend to be processes and exercises that look at controls from an organizational lens to arrive at organizational specific controls (control mapping).
+One of the very first topics that comes up with almost every organization is cloud Governance Risk and Compliance  or in smaller orgs, simply "security" (GRC+).  This word means a lot of different things to different people.  For a more mature organization GRC+ involves a full review of vendor compliance documentation like SOC reports etc (Service Trust Portal).  For a smaller organization it might simply mean applying a benchmark or checklist such as the Azure Security Benchmark.  In regulated industries, regardless of the size of the organization, the process is almost always the former.  For the purposes of this discussion, we will recap at a very high level the common components of a GRC program to provide context and frame the discussion around GRC in Azure and where Azure tools such as Azure Policy can assist.
+
+At a VERY basic level GRC can be summarized as
+
+	• Governance
+		• What do you need to do?
+			* Laws and regulations
+			* Business Requirements
+			* Standards and Frameworks
+		• Why do you need to do it?
+			* Customer Commitments
+			* Laws and Regulations
+			* Business Agreements
+		• What are you going to do?
+			* Organizational Policies
+			* Organizational Controls and Standards
+		• How are you going to do it?
+			* Benchmark Checklist definitions
+			* Processes, Procedures, and compensating Controls
+			* System Security Plans
+	• Risk
+		• What was the reasoning and justification for choosing to do what you did, how you did it?
+			* Risk Assessments
+				○ Controls Mapping decisions
+				○ Exception processes
+				○ Business risk assessments
+				○ Application risk assessments
+				○ Program Assessments
+		• What did you do?
+			* Data classification
+			* Application classification
+		• What are you doing?
+			* Vulnerability Monitoring
+	• Compliance
+		• What did you do?
+			* Assessments
+				○ Self
+				○ External
+		• What are you doing?
+			* Monitoring
+			* Alerting
+			* Reporting
+		• Did you / Are you do what you said you were going to do?
+			* Audits
+				○ Internal Audits
+		• Did you / Are you doing what you are supposed to do?
+			* Audits
+				○ Regulatory Audits
+				○ Contractual Audits
+---
+---
+
+# Azure Policy
+## Summary
+Azure Policy is a service within Azure to help organizations meet their GRC requirements.  It allows for the audit, reporting and enforcement of a wide range of controls in an organizations Azure estate.  In addition there are pre-built "initiatives" which are collections of controls mapped to common frameworks like CIS, NIST, FedRAMP, or PCI that allow an organization to quickly get started.  It is important to note that Azure Policy can fill multiple functions within the GRC+ framework; it can document and enforce controls (Governance), audit controls (Compliance), and it can even provide risk scores based on level of compliance to applied frameworks. In addition the pre-built initiatives provide a great foundation for an organization to start from. That being said there is no easy button and just as with any new technology, an organization still must follow the processes and exercises that look at controls from an organizational lens to arrive at organizational specific controls (control mapping).
 ## Key Points
 * Order of Evaluation
     * All policies that would apply to a resource are aggregated and evaluated at once resulting in cumulative most restrictive 
@@ -20,6 +84,7 @@ Through the thought process and design of the Management Group and Subscription 
 * Policies, initiative assignments and exemptions are inherited down but scope assignment does not matter
     * Conflicting policies will simply result in an inability to create resources
 * Azure Deny Assignments can only be created as part of blueprints.  They are not a part of Azure Policy but rather Azure RBAC.
+* Most of the controls in the pre-built Azure Initiatives are audit only!
 ## Best Practices
 * Identify a controls framework to start with that the organization is familiar with and review the Azure Benchmark (checklist) for that controls framework
 * Remember that, while checklists are a great starting point, in the GRC+ lifecycle, checklists are pretty far down the line and generally organization specific so be sure to do a control mapping to the organizations controls.
