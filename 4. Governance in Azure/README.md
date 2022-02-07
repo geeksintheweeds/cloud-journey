@@ -26,12 +26,18 @@ At a VERY basic level GRC can be summarized as
 	* What did you / are you doing?
 	* Did you / Are you do what you said you were going to do?
 	* Did you / Are you doing what you are supposed to do?
+
 ---
 ---
 
 # Azure Policy
 ## Summary
-Azure Policy is a service within Azure to help organizations meet their GRC requirements.  It allows for the audit, reporting and enforcement of a wide range of controls in an organizations Azure estate.  In addition there are pre-built "initiatives" which are collections of controls mapped to common frameworks like CIS, NIST, FedRAMP, or PCI that allow an organization to quickly get started.  It is important to note that Azure Policy can fill multiple functions within the GRC+ framework; it can document and enforce controls (Governance), audit controls (Compliance), and it can even provide risk scores based on level of compliance to applied frameworks. In addition the pre-built initiatives provide a great foundation for an organization to start from. That being said there is no easy button and just as with any new technology, an organization still must follow the processes and exercises that look at controls from an organizational lens to arrive at organizational specific controls (control mapping).
+Within the Azure cloud there are generally speaking, Azure technical controls, non-Azure controls, and non-technical controls.  Azure Policy is a service within Azure to help organizations meet their GRC requirements for Azure technical controls.  It allows for the audit, reporting and enforcement of a wide range of technical controls in an organizations Azure estate.  In addition there are pre-built "initiatives" which are collections of controls mapped to common frameworks like CIS, NIST, FedRAMP, or PCI that allow an organization to quickly get started.  Azure Policy can assist with multiple functions within the GRC+ framework; it can document and enforce controls (Governance), audit controls (Compliance), and it can even provide risk scores based on level of compliance to applied frameworks. While the pre-built initiatives provide a great foundation for an organization to start from there will still be non-azure controls and non-technical controls that an organization will need to consider.
+
+There is no easy button and just as with any new technology, an organization still must follow the processes and exercises that look at controls from an organizational lens to arrive at organizational specific controls (control mapping).  
+
+![asb](https://github.com/geeksintheweeds/cloud-journey/tree/main/4.%20Governance%20in%20Azure/images/azurebenchmarkcontrolscoverage.jpg)
+
 ## Key Points
 * Order of Evaluation
     * All policies that would apply to a resource are aggregated and evaluated at once resulting in cumulative most restrictive 
