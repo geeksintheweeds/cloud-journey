@@ -39,6 +39,9 @@ There is no easy button and just as with any new technology, an organization sti
 ![asb](images/azurebenchmarkcontrolscoverage.jpg)
 
 ## Key Points
+* Built-in Azure Policy Initiatives provide opinionated benchmarks of Azure technical controls that align to most common control frameworks to allow an organization to quickly audit their azure estate
+* Azure Policy cannot audit or enforce non-azure and non-technical controls
+* Built-in Azure Policy Initiatives do not enforce most controls
 * Order of Evaluation
     * All policies that would apply to a resource are aggregated and evaluated at once resulting in cumulative most restrictive 
 	* Disabled --> Append/Modify --> Deny --> Audit
