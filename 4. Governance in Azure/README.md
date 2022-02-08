@@ -20,12 +20,13 @@ At a VERY basic level GRC can be summarized as
 	* What are you going to do?
 	* How are you going to do it?
 * Risk
-	* What did you / are you doing?
-	* Why did you do what you did, how you did it?
+	* What is the delta between what you need to do and what you said you were going to do?
+    * What is the delta between what you need to do and what you you did?
+	* What is the delta between what you said you would do and what you did?
 * Compliance
 	* What did you / are you doing?
-	* Did you / Are you do what you said you were going to do?
-	* Did you / Are you doing what you are supposed to do?
+	* Did you / are you doing what you said you were going to do?
+	* Did you / are you doing what you are supposed to do?
 
 ---
 ---
