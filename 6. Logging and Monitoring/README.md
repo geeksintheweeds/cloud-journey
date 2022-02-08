@@ -130,6 +130,7 @@ The logical progression from Logging is Monitoring.  Where logging is the collec
 ## Links
 * [Azure Docs | Microsoft Docs](https://docs.microsoft.com/en-us/azure/?product=popular)
 * [Azure Docs | Microsoft Docs](https://docs.microsoft.com/en-us/azure/?product=popular)
+* [Azure Inventory Dashboard | Blog](https://www.cloudsma.com/2020/10/ultimate-azure-inventory-dashboard/)
 ## Learning
 * Mslearn
 	* [Link MS Learn and other learning resources here | MS Learn](https://docs.microsoft.com/en-us/learn/)

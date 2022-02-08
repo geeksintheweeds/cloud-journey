@@ -113,4 +113,5 @@ There is no easy button and just as with any new technology, an organization sti
 	* [Azure Policy Definition](https://www.youtube.com/watch?v=QNwS_XiaNMc)
 * Premiere Workshops
 	* Activate Azure with Administration & Governance (https://datasheet.azureedge.net/offerings-datasheets/8230/EN.pdf)
-	* Modern Service Management Governance for Azure (https://datasheet.azureedge.net/offerings-datasheets/9005/EN.pdf)
+	* Azure Governance Management Optimization (https://datasheet.azureedge.net/offerings-datasheets/12243/EN.pdf)
+	* Azure Governance Planning (https://datasheet.azureedge.net/offerings-datasheets/12244/EN.pdf)
