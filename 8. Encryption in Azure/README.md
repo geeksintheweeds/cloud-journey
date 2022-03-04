@@ -49,8 +49,8 @@ There are a number of options when determining the type and level of encryption 
 ![options](images/azurevmdiskencryptionoptions.png)
 ## Key Points
 * Server Side Encryption with Platform Managed Keys (Default) + Host Based Encryption ensures all customer data is encrypted at rest with zero additional customer overhead
-* Platform Managed Keys (SSE or ADE) provide additional control over the keys and potentially additional security but ONLY IF YOU ROTATE THEM.  So consider the additional overhead before going the CMK route.
-* Rotation of Customer Managed Keys can b
+* Customer Managed Keys (SSE or ADE) provide additional control over the keys and potentially additional security but ONLY IF YOU ROTATE THEM.  So consider the additional overhead before going the CMK route.
+* Automatic rotation of customer managed keys requires additional work on the customers part to build the automation (Azure Automation or Azure Function are options) at the moment, however Key Rotation Policy is currently in Preview and will address this overhead.  
 ## Best Practices
 * Enable Host Based Encryption on all subscriptions
 * Leverage Platform Managed Keys where possible and where policy permits to aleviate operational overhead
