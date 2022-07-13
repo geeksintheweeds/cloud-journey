@@ -17,6 +17,9 @@ As an organization starts to think about their Governance requirements and where
 	* Platform - Provide information about Azure Resource Manager Create, Update, Delete (CRUD) operations
 		* Subscriptions and Management Groups
 		    * Azure Activity Log (ex: Creation of a Keyvault)
+                * 90 Day Retention
+                * Accessible via PS, CLI, REST, Portal, Download(CSV)
+                * No data ingestion or storage charges (first 90 days) to send Activity Logs to LaW
 	* Tenant
 		* Azure AD Logs
 			* Sign-Ins - Who is logging in and how
