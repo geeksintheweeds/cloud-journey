@@ -20,7 +20,7 @@ Azure RBAC is the mechanism by which IAM policies can be configured and enforced
 * Deny assignments for Azure RBAC are only available as part of Blue Prints which are public preview (Not GA)
 * Azure RBAC defines what access a user has to Azure resources where as Azure Policy defines what can and cannot be done with azure resources.  Azure Policies will trump Azure RBAC.
 ## Best Practices
-* Use Built-In roles where possible
+* Start with clones of builtin roles
 * When creating custom roles, start with a built-in role
 * Store all custom roles at the tenant level or in an Identity Subscription
 * Assign roles to Groups not users
