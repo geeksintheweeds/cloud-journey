@@ -101,6 +101,7 @@ There is no easy button and just as with any new technology, an organization sti
 * [AzAdvertizer Other](https://www.azadvertizer.net/other.html)
 * [Sample Azure Policy Scripts | github](https://github.com/JimGBritt/AzurePolicy/tree/master/AzureMonitor/Scripts)
 * [Understand Azure deny assignments - Azure RBAC | Microsoft Docs](https://docs.microsoft.com/en-us/azure/role-based-access-control/deny-assignments)
+* [10 Azure Policy Ideas to get Started | Blog](https://azureis.fun/posts/Azure-Policy-ideas-for-Azure-Governance/)
 ## Learning
 * Mslearn
 	* [Design an enterprise governance strategy - Learn | Microsoft Docs](https://docs.microsoft.com/en-us/learn/modules/enterprise-governance/)
